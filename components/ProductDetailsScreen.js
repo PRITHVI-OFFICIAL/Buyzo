@@ -1,19 +1,44 @@
 import React from "react";
-import {View,Text,TouchableOpacity,StyleSheet,Image} from 'react-native';
+import {View,Text,TouchableOpacity,StyleSheet,Image,Alert} from 'react-native';
 import Colors from "../Colors";
 import Ionicons from '@expo/vector-icons/Ionicons';
 import DATA from '../product.json';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../state/actions'; // Update import
 
-const ProductDetailsScreen =({route})=>{
+const ProductDetailsScreen = ({ route }) => {
+  const { idx } = route.params;
+  const product = DATA.find((value) => value.id === idx);
+  console.log(product);
 
-  const {idx}=route.params;
-  console.log(idx);
+  const dispatch = useDispatch();
 
-  const product = DATA.filter((value) => value.id === idx)[0];
-console.log(product);
+  const handleAddToCart = () => {
+    dispatch(addToCart({
+      id: 1,
+      name: 'Product Name',
+      category: 'Product Category',
+      price: 20, // price per unit
+      quantity: 1, // initial quantity in the cart
+      image: 'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg', // URL of the product image
+      rating: 4, // rating of the product
+    })); // Pass product directly to addToCart action
+    Alert.alert("Added to Cart");
+  };
 
+  const handleRemoveToCart = () => {
+    dispatch(removeToCart({
+      id: 1,
+      name: 'Product Name',
+      category: 'Product Category',
+      price: 20, // price per unit
+      quantity: 1, // initial quantity in the cart
+      image: 'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg', // URL of the product image
+      rating: 4, // rating of the product
+    })); // Pass product directly to addToCart action
+    Alert.alert("Added to Cart");
+  };
 
- 
 
   return(
 
@@ -49,7 +74,7 @@ console.log(product);
 
     <View style={{flexDirection:'row',justifyContent:'space-around',marginTop:10}}>
 
-    <TouchableOpacity>
+    <TouchableOpacity onPress={handleAddToCart}>
     <View style={{width:150,height:60,backgroundColor:'orange',borderRadius:10,justifyContent:'center',alignItems:'center'}}>
 
     <Text style={{fontWeight:'bold',color:'white'}}>Add to Cart</Text>

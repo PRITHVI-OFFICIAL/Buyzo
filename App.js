@@ -11,6 +11,9 @@ import Colors from './Colors';
 import Login from './screens/Login';
 import {useNavigation} from '@react-navigation/native';
 import Signup from './screens/Signup';
+import Carts from './screens/Carts';
+import { Provider } from 'react-redux';
+import store from './state/store';
 
 
 const Tab = createBottomTabNavigator();
@@ -18,7 +21,9 @@ const Tab = createBottomTabNavigator();
 export default function App() {
   
   return (
-    <NavigationContainer>
+    <Provider store={store}>
+
+<NavigationContainer>
       <Tab.Navigator initialRouteName={Login}>
 
       <Tab.Screen name="Login" component={Login} options={{tabBarButton: (props) => null,tabBarStyle: { display: "none"}, headerShown:false}} /> 
@@ -34,13 +39,19 @@ export default function App() {
 
       <Tab.Screen name="ProductDetails" component={ProductDetailsScreen} options={{ tabBarVisible: false,tabBarButton: (props) => null,tabBarStyle: { display: "none"}}} />
 
-     
+        
+      <Tab.Screen name="Carts" component={Carts} options={{ tabBarIcon:({size,color,focused})=>(
+            <Ionicons name="bag-add-outline" size={25} color={focused?Colors.primary:'grey'} />
+        ),}} />
       
         
         <Tab.Screen name="UserProfile" component={UserProfile} options={{ tabBarIcon:({size,color,focused})=>(
             <Ionicons name="person-outline" size={25} color={focused?Colors.primary:'grey'} />
-          ),}} />
+        ),}} />
       </Tab.Navigator>
     </NavigationContainer>
+
+
+    </Provider>
   );
 }

@@ -46,7 +46,7 @@ const Home = () => {
 
     <View  style={styles.phonelogoContainer}>
 
-    <TouchableOpacity style={{width:70,justifyContent:'center',alignItems:'center'}} onPress={navigation.navigate('Products')}>
+    <TouchableOpacity style={{width:70,justifyContent:'center',alignItems:'center'}} onPress={()=>navigation.navigate('Products')}>
     <Image source={{uri: 'https://fdn.gsmarena.com/imgroot/news/19/12/realme-fitness-band-launch-h1-2020/-727/gsmarena_001.jpg',}} style={{ width: 50, height: 50, borderRadius:100, resizeMode: 'cover' }}/>
     <Text style={{marginTop:5}}>Realme</Text>
     </TouchableOpacity>

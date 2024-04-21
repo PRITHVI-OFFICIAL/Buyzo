@@ -11,6 +11,8 @@ import {useNavigation} from '@react-navigation/native';
 
 const Products = () => {
 
+ 
+
   console.log(DATA[0]);
   const navigation=useNavigation();
   
