@@ -127,6 +127,10 @@ const Home = () => {
     </ScrollView>
     </View>
 
+    <View style={{height:120,marginTop:20}}>
+        <Image source={{uri: 'https://rukminim2.flixcart.com/fk-p-flap/1020/540/image/8c847eea35140ed6.jpg',}} style={{ width: '100%', height: '100%', borderRadius: 15, resizeMode:'cover',}}/>
+      </View>
+
     <View style={{marginTop:20,}}>
     <Text style={styles.heading}>Popular Offers!!</Text>
 
@@ -134,7 +138,7 @@ const Home = () => {
 
       <View style={styles.photocontainer}>
       <TouchableOpacity>
-      <Image source={{uri: 'https://rukminim2.flixcart.com/image/240/240/xif0q/backpack/y/q/d/-original-imagh3w8jyhynyyr.jpeg?q=80',}} style={{ width: '100%', height: '70%', resizeMode: 'cover',borderRadius:10}}/>
+      <Image source={{uri: 'https://rukminim2.flixcart.com/image/360/360/xif0q/headphone/z/c/x/nb111-wireless-bluetooth-headphone-magnetic-neckband-250h-original-imagwcm53gkzmtct.jpeg?q=80',}} style={{ width: '100%', height: '70%', resizeMode: 'contain',borderRadius:10}}/>
       <Text style={{margin:5}}>Bags</Text>
       <Text style={{margin:5,fontWeight:'bold',color:'green'}}>Min 70% Offer</Text>
       </TouchableOpacity>
@@ -153,13 +157,16 @@ const Home = () => {
       <View style={styles.photocontainer}>
       <TouchableOpacity>
       <Image source={{uri: 'https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/i1-665455a5-45de-40fb-945f-c1852b82400d/react-infinity-run-flyknit-mens-running-shoe-zX42Nc.jpg',}} style={{ width: '100%', height: '70%', resizeMode: 'contain',borderRadius:10 }}/>
-      <Text style={{margin:5}}></Text>
+      <Text style={{margin:5}}>Shoes</Text>
       <Text style={{margin:5,fontWeight:'bold',color:'green'}}>Min 10% Offer</Text>
       </TouchableOpacity>
       </View>
 
 
     </View>
+
+
+    
     </View>
 
     
@@ -208,7 +215,7 @@ const styles = StyleSheet.create(
   }, 
   photocontainer:{
     marginTop:5,
-    height:200,
+    height:180,
     width:120,
     backgroundColor:'white',
     borderRadius:10,

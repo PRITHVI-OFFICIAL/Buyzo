@@ -14,7 +14,7 @@ const cartReducer = createReducer(initialState, builder => {
       state.cart.cartItems.push({ ...action.payload, quantity: 1 });
     })
     .addCase(removeFromCart, (state, action) => {
-      state.cartItems = state.cart.cartItems.filter(item => item.id !== action.payload);
+      state.cart.cartItems = state.cart.cartItems.filter(item => item.id !== action.payload);
     })
     .addCase(incrementQuantity, (state, action) => {
       const item = state.cart.cartItems.find(item => item.id === action.payload);

@@ -14,42 +14,20 @@ import Signup from './screens/Signup';
 import Carts from './screens/Carts';
 import { Provider } from 'react-redux';
 import store from './state/store';
+import { Feather } from '@expo/vector-icons';
+import { useSelector } from 'react-redux';
 
-
+import Navigation from './navigation/Navigator';
 const Tab = createBottomTabNavigator();
 
 export default function App() {
+
+
   
   return (
     <Provider store={store}>
 
-<NavigationContainer>
-      <Tab.Navigator initialRouteName={Login}>
-
-      <Tab.Screen name="Login" component={Login} options={{tabBarButton: (props) => null,tabBarStyle: { display: "none"}, headerShown:false}} /> 
-      <Tab.Screen name="Signup" component={Signup} options={{tabBarButton: (props) => null,tabBarStyle: { display: "none"}, headerShown:false}} /> 
-
-      <Tab.Screen name="Home" component={Home}  options={{ tabBarIcon:({size,color,focused})=>(
-            <Ionicons name="home-outline" size={25} color={focused?Colors.primary:'grey'} />
-          ),}} />
-
-      <Tab.Screen name="Products" component={Products} options={{ tabBarIcon:({size,color,focused})=>(
-            <Ionicons name="cart-outline" size={25} color={focused?Colors.primary:'grey'} />
-          ),}} /> 
-
-      <Tab.Screen name="ProductDetails" component={ProductDetailsScreen} options={{ tabBarVisible: false,tabBarButton: (props) => null,tabBarStyle: { display: "none"}}} />
-
-        
-      <Tab.Screen name="Carts" component={Carts} options={{ tabBarIcon:({size,color,focused})=>(
-            <Ionicons name="bag-add-outline" size={25} color={focused?Colors.primary:'grey'} />
-        ),}} />
-      
-        
-        <Tab.Screen name="UserProfile" component={UserProfile} options={{ tabBarIcon:({size,color,focused})=>(
-            <Ionicons name="person-outline" size={25} color={focused?Colors.primary:'grey'} />
-        ),}} />
-      </Tab.Navigator>
-    </NavigationContainer>
+      <Navigation/>
 
 
     </Provider>

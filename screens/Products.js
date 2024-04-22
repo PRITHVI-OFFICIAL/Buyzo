@@ -1,20 +1,27 @@
-import React from 'react';
+import React,{useEffect}from 'react';
 import { Modal, View, Image, Button,Text,StyleSheet, TouchableOpacity , Dimensions,ScrollView } from 'react-native';
 import Colors from '../Colors';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import ProductListScreen from '../components/ ProductListScreen';
 import DATA from '../product.json';
 import {useNavigation} from '@react-navigation/native';
-
+import { AntDesign } from '@expo/vector-icons';
 
 
 
 const Products = () => {
 
- 
-
-  console.log(DATA[0]);
   const navigation=useNavigation();
+
+  useEffect(() => {
+    navigation.setOptions({
+        headerLeft: () => (
+            <TouchableOpacity onPress={()=>navigation.goBack()} >
+              <AntDesign name="arrowleft" size={24} color="black" style={{marginLeft:15}} />
+            </TouchableOpacity>
+        ),
+    });
+}, [navigation]);
   
   return (
     <View style={styles.container}>
