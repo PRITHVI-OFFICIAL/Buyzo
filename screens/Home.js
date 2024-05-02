@@ -191,7 +191,7 @@ const styles = StyleSheet.create(
   
   heading:{
     paddingBottom:10,
-    fontSize:22,
+    fontSize:20,
     fontWeight:"bold"  
 },
   imageContainer:{

@@ -1,15 +1,26 @@
-import React ,{useEffect}from 'react';
+import React ,{useEffect,useState}from 'react';
 import { Modal, View, Image, Button,Text,StyleSheet, TouchableOpacity , Dimensions } from 'react-native';
 import colors from '../Colors';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import {useNavigation} from '@react-navigation/native';
 import { AntDesign,FontAwesome,MaterialIcons  } from '@expo/vector-icons';
-
+import { useDispatch,useSelector } from 'react-redux';
+import {auth} from '../state/actions';
 
 
 
 
 const Userprofile = ({navigation}) =>  {
+
+  const dispatch=useDispatch(); 
+  const authallow=useSelector(state=>state.auth.allow);
+  console.log(authallow);
+
+  const onHandleSignOut=()=>{
+
+    dispatch(auth(false));
+    console.log("HiiI");
+  }
 
   useEffect(() => {
     navigation.setOptions({
@@ -20,6 +31,15 @@ const Userprofile = ({navigation}) =>  {
         ),
     });
 }, [navigation]);
+
+
+
+
+  
+
+
+
+
     
   {
    return (
@@ -34,7 +54,7 @@ const Userprofile = ({navigation}) =>  {
            />
 
            <Text style={styles.name}>Prithvi</Text>
-     
+           {/* <Text >{data.length}</Text> */}
 
   
          </View>
@@ -80,7 +100,7 @@ const Userprofile = ({navigation}) =>  {
      </View>
    </TouchableOpacity>
    
-   <TouchableOpacity onPress={{}} style={{marginLeft:60}}>
+   <TouchableOpacity onPress={onHandleSignOut} style={{marginLeft:60}}>
      <View
        style={{
          backgroundColor: colors.primary,

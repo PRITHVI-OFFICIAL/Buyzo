@@ -4,10 +4,10 @@ import colors from '../Colors';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import {useNavigation} from '@react-navigation/native';
 import { AntDesign,FontAwesome,MaterialIcons  } from '@expo/vector-icons';
-import { CreditCardInput, LiteCreditCardInput } from "react-native-credit-card-input";
 import FlipCard from 'react-native-flip-card'
 import Colors from '../Colors';
 import { useSelector, useDispatch } from 'react-redux';
+import { booked } from '../state/actions';
 
 
 
@@ -15,8 +15,10 @@ import { useSelector, useDispatch } from 'react-redux';
 
 const Payment = ({navigation}) =>  {
 
-    const [number,setnumber]=useState("•••• •••• •••• ••••");
-    const [date,setdate]=useState('00');
+    const dispatch=useDispatch();
+
+    const [number,setnumber]=useState("");
+    const [date,setdate]=useState("");
     const [cvv,setcvv]=useState('•••');
 
     const cartItems=useSelector(state=>state.cart.cartItems);
@@ -36,7 +38,13 @@ const Payment = ({navigation}) =>  {
         'Purchase Successful',
         'Payment Recieved Sucessfully',
         [
-          {text: 'OK', onPress: ()=> navigation.navigate('UserProfile')},
+          {text: 'OK', onPress: ()=> {
+            
+            dispatch(booked())
+            navigation.navigate('BookedHistory');
+        
+
+        }},
         ],
         { cancelable: false }
       )
@@ -72,12 +80,13 @@ console.log(TotalAmount);
 
         <TextInput
         style={styles.name}
+        placeholder="•••••••••••••••"
+        placeholderTextColor={"white"}
         onChangeText={setnumber}
         value={number}
         maxLength={12}
         keyboardType='numeric'
       />
-        {/* <Text style={{fontSize:14,color:'white',bottom:60,left:150}}>VALID THROUGH</Text>  */}
         <View style={{flexDirection:'row',justifyContent:'space-around',bottom:120,left:120}}>
           
           <View>
@@ -89,12 +98,13 @@ console.log(TotalAmount);
 
            <TextInput
                 style={{fontSize:18,color:'white'}}
+                 placeholder='MMYY'
+                placeholderTextColor={"white"}
                 onChangeText={setdate}
                 value={date}
                 maxLength={4}
                 keyboardType='numeric'
       />
-            
            </View>
           </View>
         </View>
@@ -231,7 +241,7 @@ const styles = StyleSheet.create({
         fontSize: 30,
         position: "absolute",
         top:'35%', 
-        letterSpacing:5, 
+        letterSpacing:8, 
         //left:100,
         color:'white',
         textAlign:'center'

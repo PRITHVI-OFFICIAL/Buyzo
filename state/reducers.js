@@ -1,10 +1,16 @@
 // reducers.js
 import { createReducer } from '@reduxjs/toolkit';
-import { addToCart, removeFromCart, incrementQuantity, decrementQuantity } from '../state/actions';
+import { addToCart, removeFromCart, incrementQuantity, decrementQuantity,booked,auth } from '../state/actions';
 
 const initialState = {
   cart:{
     cartItems: [],
+  }, 
+  booked:{
+    bookedItems:[]
+  }, 
+  auth:{
+    allow:false
   }
 };
 
@@ -28,7 +34,16 @@ const cartReducer = createReducer(initialState, builder => {
         item.quantity = Math.max(0, item.quantity - 1);
       }
       state.cart.cartItems = state.cart.cartItems.filter(item => item.quantity > 0);
+    })    
+    .addCase(booked, (state) => {
+      state.booked.bookedItems.push(...state.cart.cartItems);
+      state.cart.cartItems = [];
+    })
+    .addCase(auth, (state,action) => {
+      state.auth.allow=action.payload;
+      
     });
+
 });
 
 export default cartReducer;

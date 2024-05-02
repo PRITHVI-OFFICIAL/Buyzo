@@ -1,4 +1,4 @@
-import React,{useEffect}from 'react';
+import React,{useEffect, useState}from 'react';
 import { Modal, View, Image, Button,Text,StyleSheet, TouchableOpacity , Dimensions,ScrollView } from 'react-native';
 import Colors from '../Colors';
 import Ionicons from '@expo/vector-icons/Ionicons';
@@ -22,6 +22,27 @@ const Products = () => {
         ),
     });
 }, [navigation]);
+
+  const [products,setproducts]=useState([]);
+  const fetchData = async () => {
+    try {
+      const response = await fetch('https://nodemongo-wwr6.onrender.com/products');
+      const dataa = await response.json();
+      console.log(dataa);
+      setproducts(dataa);
+      return dataa;
+
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      return null;
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+
   
   return (
     <View style={styles.container}>
@@ -31,7 +52,7 @@ const Products = () => {
      <ScrollView>
 
      
-      {DATA.map((item, index) => (
+      {products.map((item, index) => (
         <ProductListScreen id={index+1} key={index} name={item.title} category={item.category} image={item.image} price={item.price} rating={item.rating.rate} />
       ))}
 

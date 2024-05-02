@@ -36,14 +36,13 @@ const Carts = () => {
 
   console.log(itemCount);
 
-  
+
   const cartItems = items.filter((obj, index) => {
     return index === items.findIndex(o => obj.id === o.id);
 });
 
 
 const TotalAmount=cartItems.reduce((amount,item)=> amount+ ((parseInt(item.price)*20)*item.quantity),0);
-console.log(TotalAmount);
 
 
 
