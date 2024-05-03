@@ -1,4 +1,4 @@
-# Buyzo E-commerce Application
+# Buyzo - Ecommerce Application
 
 [![React Native](https://img.shields.io/badge/React%20Native-v0.63.4-blue.svg)](https://reactnative.dev/)
 [![Redux](https://img.shields.io/badge/Redux-v4.0.5-purple.svg)](https://redux.js.org/)
@@ -22,7 +22,7 @@ This will start the Expo development server and provide you with options to run 
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/prithvi-official/buyzo.git
+   git clone https://github.com/PRITHVI-OFFICIAL/Buyzo.git
 
 
 2. Navigate to the project directory:
@@ -33,7 +33,7 @@ This will start the Expo development server and provide you with options to run 
 3. Install the Dependencies:
     
       ```bash
-   cd buyzo
+   npm install
    
 3. Start the Project:
     
